@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/redstone_dust_dot",
   "textures": {
-    "cross": "bluestone:block/signed_redstone_wire"
+    "": "bluestone:block/signed_redstone_wire"
   }
 }

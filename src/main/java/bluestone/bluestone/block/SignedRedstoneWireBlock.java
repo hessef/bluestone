@@ -26,6 +26,7 @@ public class SignedRedstoneWireBlock extends RedstoneWireBlock {
     public static final EnumProperty<WireConnection> SOUTH = RedstoneWireBlock.WIRE_CONNECTION_SOUTH;
     public static final EnumProperty<WireConnection> WEST  = RedstoneWireBlock.WIRE_CONNECTION_WEST;
     public static final IntProperty POWER = RedstoneWireBlock.POWER;
+    private boolean wiresGivePower = true;
 
     // Whether the signal is negative (true) or positive (false)
     public static final BooleanProperty NEGATIVE = BooleanProperty.of("negative");
@@ -72,7 +73,7 @@ public class SignedRedstoneWireBlock extends RedstoneWireBlock {
 
     @Override
     public boolean emitsRedstonePower(BlockState state) {
-        return true;
+        return this.wiresGivePower;
     }
 
     /** Vanilla only sees the magnitude of the signed power. */
