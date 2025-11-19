@@ -2,10 +2,12 @@ package bluestone.bluestone.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.RedstoneWireBlock;
+import net.minecraft.block.enums.WireConnection;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.IntProperty;
-import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockView;
@@ -17,20 +19,23 @@ import net.minecraft.util.math.random.Random;
  * Wire that carries a signed signal internally (-15..15),
  * but reports magnitude (0..15) to vanilla redstone.
  */
-public class SignedRedstoneWireBlock extends Block {
-
-    // Standard 0..15 power property
-    public static final IntProperty POWER = Properties.POWER;
+public class SignedRedstoneWireBlock extends RedstoneWireBlock {
+    //RedstoneWireBlock properties
+    public static final EnumProperty<WireConnection> NORTH = RedstoneWireBlock.WIRE_CONNECTION_NORTH;
+    public static final EnumProperty<WireConnection> EAST  = RedstoneWireBlock.WIRE_CONNECTION_EAST;
+    public static final EnumProperty<WireConnection> SOUTH = RedstoneWireBlock.WIRE_CONNECTION_SOUTH;
+    public static final EnumProperty<WireConnection> WEST  = RedstoneWireBlock.WIRE_CONNECTION_WEST;
+    public static final IntProperty POWER = RedstoneWireBlock.POWER;
 
     // Whether the signal is negative (true) or positive (false)
     public static final BooleanProperty NEGATIVE = BooleanProperty.of("negative");
 
     public SignedRedstoneWireBlock(Settings settings) {
         super(settings);
+
+        //set defaults
         this.setDefaultState(
-            this.getStateManager().getDefaultState()
-                .with(POWER, 0)
-                .with(NEGATIVE, false)
+            this.getDefaultState().with(NEGATIVE, false)
         );
     }
 
@@ -59,7 +64,8 @@ public class SignedRedstoneWireBlock extends Block {
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(POWER, NEGATIVE);
+        super.appendProperties(builder);
+        builder.add(NEGATIVE);
     }
 
     // ========== Vanilla redstone integration ==========

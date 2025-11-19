@@ -1,7 +1,8 @@
 package bluestone.bluestone.block;
 
-import net.minecraft.block.Block;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.RedstoneTorchBlock;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockView;
@@ -10,9 +11,9 @@ import net.minecraft.world.BlockView;
  * Torch that outputs a constant -15 signed power in all directions,
  * but appears as 15 power to vanilla devices.
  */
-public class BluestoneTorchBlock extends Block implements SignedSignalSource {
+public class BluestoneTorchBlock extends RedstoneTorchBlock implements SignedSignalSource {
 
-    public BluestoneTorchBlock(Settings settings) {
+    public BluestoneTorchBlock(AbstractBlock.Settings settings) {
         super(settings);
     }
 

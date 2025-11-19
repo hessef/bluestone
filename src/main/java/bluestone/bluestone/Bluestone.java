@@ -10,11 +10,7 @@ import net.minecraft.block.AbstractBlock;
 //imports from minecraft
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
 import net.minecraft.item.Items;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
@@ -40,23 +36,18 @@ public class Bluestone implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		
 		// Register blocks using the 1.21.2+ pattern with registry keys in Settings
-
         SIGNED_REDSTONE_WIRE = registerBlock(
                 "signed_redstone_wire",
                 s -> new SignedRedstoneWireBlock(s),
-                AbstractBlock.Settings.create()
-                        .noCollision()
-                        .strength(0.0F)
-                        .nonOpaque()
+                AbstractBlock.Settings.copy(Blocks.REDSTONE_WIRE)
         );
 
         BLUESTONE_TORCH = registerBlock(
                 "bluestone_torch",
                 s -> new BluestoneTorchBlock(s),
-                AbstractBlock.Settings.create()
-                        .strength(0.0F)
-                        .luminance(state->7)
+                AbstractBlock.Settings.copy(Blocks.REDSTONE_TORCH)
         );
     }
 
