@@ -5,7 +5,7 @@
 	"name": "Bluestone",
 	"description": "This is an example description! Tell everyone what your mod is about!",
 	"authors": [
-		"Me!"
+		"Literally //REDACTED//"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
@@ -39,6 +39,6 @@
 		"fabric-api": "*"
 	},
 	"suggests": {
-		"another-mod": "*"
+		"jade": "*"
 	}
 }

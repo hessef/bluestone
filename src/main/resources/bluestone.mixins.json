@@ -3,7 +3,7 @@
 	"package": "bluestone.bluestone.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"ExampleMixin"
+		"BlockItemRedstoneMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
